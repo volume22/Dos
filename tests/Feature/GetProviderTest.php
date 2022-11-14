@@ -19,14 +19,14 @@ class GetProviderTest extends TestCase
 
         $response->assertStatus(200);
     }
-      // public function test_201_ok()
+    //   public function test_201_ok()
     // {
     //     $response = $this->post('http://127.0.0.1:8000/api/provider',['Type'=>'Machine','product_id'=>1,'provider_id'=>1,'product_name'=>'Qweweqwe','description'=>'Asdasdasd','price'=>'1200']);
     //     $response->assertStatus(201);
     // }
     // public function test_405_Not_Allowed()
     // {
-    //     $response = $this->get('http://127.0.0.1:8000/api/providers',['provider_id'=>1,'provider_name'=>'Trust']);
+    //     $response = $this->get('http://127.0.0.1:8000/api/provider',['provider_id'=>1,'provider_name'=>'Trust']);
     //     $response->assertStatus(405);
     // }
     // public function test_404_Access_allowed_only_for_registered_(){
@@ -38,7 +38,7 @@ class GetProviderTest extends TestCase
     //     $response->assertStatus(500);    
     // }
     // public function test_204_Deleted(){
-    //     $response = $this->delete('http://127.0.0.1:8000/api/provider/9');
+    //     $response = $this->delete('http://127.0.0.1:8000/api/provider/1');
     //     $response->assertStatus(204);  
     // }
 }

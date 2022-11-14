@@ -13,5 +13,7 @@ class Order extends Model
     public function products(){
         return $this->belongsTo(Product::class,'product_id');
     }
-
+    public function transaction(){
+        return $this->hasMany(transactions::class);
+    }
 }

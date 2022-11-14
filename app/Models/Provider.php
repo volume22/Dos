@@ -12,6 +12,6 @@ class Provider extends Model
     protected $fillable = ['provider_id', 'provider_name'];
 
     public function products(){
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class,'provider_id');
     }
 }

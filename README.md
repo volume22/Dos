@@ -64,3 +64,16 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+//
+Warehouse system 
+there is a list of orders that are recorded in transactions
+the type of products we have their suppliers its description and price
+each controller has 4 methods get ,update,create,delete
+6 migrations of 4 main models and 2 updated products and orders
+postgres
+pgsql
+DB_DATABASE Sklad
+we transfer ready-made api already with the front
+
+

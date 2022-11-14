@@ -18,10 +18,12 @@ class Product extends Model
         'Type', 'product_id', 'provider_id','product_name','description','price'
     ];
     
-    public function provider(){
-        return $this->belongsTo(Provider::class);
+    public function providers(){
+        return $this->belongsTo(Provider::class,'provider_id');
     }
-    
+    public function transaction(){
+        return $this->hasMany(transaction::class);
+    }
 
     use HasFactory;
 }

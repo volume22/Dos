@@ -13,10 +13,10 @@ class Transaction extends Model
         'transaction_id', 'product_id', 'sum','payment_for_goods','order_id'
     ];
   
-    public function product(){
+    public function products(){
         return $this->belongsTo(Product::class,'product_id');
     }
-    public function order(){
+    public function orders(){
         return $this->belongsTo(Order::class,'order_id');
     }
     use HasFactory;
