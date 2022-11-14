@@ -8,8 +8,8 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function show(){
-        
-        $order= Order::where('product_id','=','1')->with('products')->paginate(10); 
+        // where('product_id','=','1')->
+        $order= Order::with('products')->paginate(10); 
         return $order;
 
      }

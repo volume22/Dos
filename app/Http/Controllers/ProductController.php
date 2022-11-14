@@ -11,7 +11,7 @@ class ProductController extends Controller
         // if($request->Type!=null){
         $prov= Product::where(
             'price','=',
-            '5500')->with('providers')->paginate(10);
+            '7500')->with('providers')->paginate(10);
         // }else{
         //     return response()->json('NON',404);
         // }

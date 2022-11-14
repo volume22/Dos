@@ -39,7 +39,7 @@ class TransactionController extends Controller
      public function update($id,Request $request){
         $tran=Transaction::findOrFail($id);
         $tran->update([
-            'sum'=>$request->sum    ,
+            'sum'=>$request->sum,
             'product_id'=>$request->product_id,
             'payment_for_goods'=>$request->payment_for_goods,
             'order_id'=>$request->order_id
