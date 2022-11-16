@@ -10,39 +10,39 @@ class OrderController extends Controller
     public function show(){
         // where('product_id','=','1')->
         $order= Order::with('products')->paginate(10); 
+
         return $order;
+    }
 
-     }
-    
-     public function create(Request $request){
-     $order = Order::create([
-        'status'=>$request->status,
-        'product_id'=>$request->product_id]);
-    //  $sum=0;
-    //  foreach($request->products as $product){
-    //     $orderProduct =Product::create([
-    //       'order_id'=>$order->id,
-    //       'product_id'=>$product['product_id'],
-    //       'price'=>$product['price']
-    //     ]);
-    //     $sum+=($product['price']);
-    //  }
-    //  $order->update([
-    //     'status'=>$status
-    //  ]);
-     return $order;
-     }
-
-     public function update($id,Request $request){
-        $order=Order::findOrFail($id);
-        $order -> update([
-            'status'=>$request->status,
-            'product_id'=>$request->product_id
+    public function create(Request $request){
+        $validated = $request->validate([
+            'status' => 'required|max:100',
+            'product_id' => 'required|integer|max:100',
         ]);
-        return $order;
-        }
+        $order = Order::create([
+            'status' => $validated['status'],
+            'product_id' =>$validated['product_id']
+        ]);
 
-     public function delete($id){
+        return $order;
+    }
+
+     public function update(int $id, Request $request){
+        $validated = $request->validate([
+            'status' => 'required|max:100',
+            'product_id' => 'required|integer|max:100',
+        ]);
+
+        $order=Order::findOrFail($id);
+        $order->update([
+            'status'=> $validated['status'],
+            'product_id'=> $validated['product_id']
+        ]);
+        
+        return $order;
+    }
+
+     public function delete(int $id){
         try{
             $order=Order::findOrFail($id);
         }catch(Exception $exception){
@@ -50,7 +50,8 @@ class OrderController extends Controller
         } 
         
         $order->delete();
-        return response()->json('deleted done',204);
+
+        return response()->json('deleted done', 204);
     
      }
 }

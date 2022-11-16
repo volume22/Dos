@@ -13,16 +13,16 @@ use App\Models\Provider;
 // }
 class Product extends Model
 {
-   
     protected $fillable = [
-        'Type', 'product_id', 'provider_id','product_name','description','price'
+        'Type', 'product_id', 'provider_id', 'product_name', 'description', 'price'
     ];
     
     public function providers(){
         return $this->belongsTo(Provider::class,'provider_id');
     }
+
     public function transaction(){
-        return $this->hasMany(transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 
     use HasFactory;
