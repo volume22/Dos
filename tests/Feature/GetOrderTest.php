@@ -47,9 +47,10 @@ class GetOrderTest extends TestCase
     }
 
     public function test_404_Access_allowed_only_for_registered_(){
-        $response = $this->post('//http://127.0.0.1:8000/api/order',['order_id'=>1,'product_id'=>3,'status'=>'mosz']);
-        $response->assertStatus(404);
+        
+        $response = $this->post('//http://127.0.0.1:8000/api/order/1',['order_id'=>1,'product_id'=>3,'status'=>'mosz']);
         Order::find($response->id);
+        $response->assertStatus(404);
     }
 
     public function test_404_Access_allowed_only_for_registered_update(){
@@ -61,12 +62,6 @@ class GetOrderTest extends TestCase
         $response = $this->delete('http://127.0.0.1:8000/api/order/7');
         $response->assertStatus(404);  
     }
-
-    public function test_500_Internal_Server_Error(){
-        $response = $this->delete('http://127.0.0.1:8000/api/order/s4565');
-        $response->assertStatus(500);    
-    }
-
 //    public function test_json_missing_path(){
 //        $response = $this->get('http://127.0.0.1:8000/api/orders');
 //        $response->assertJsonMissingPath('orders.email');

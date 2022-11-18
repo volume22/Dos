@@ -5,49 +5,59 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 
-
 class TransactionController extends Controller
-{
+{   
+    //Public method Show in Transaction get no off filter 
+    //with (products and orders) relation 
+    //pagination up to 10 pages 
     public function show(){
-        $transaction= Transaction::with('products','orders')->paginate(10); 
+        $transaction= Transaction::with('products','orders')->paginate(config('constants.options.page')); 
 
         return $transaction;
     }
-    
-     public function create(Request $request){
+
+    //create transaction 
+    //method accept request from web page accept data validate it and create
+    public function create(Request $request){
+        $validated = $request->validate([
+            'sum' => 'required|integer|max:100',
+            'payment_for_goods' => 'required|max:100',
+            'order_id' => 'required|integer|max:100',
+            'product_id' => 'required|integer|max:100',
+        ]);
         $transaction = Transaction::Create([
-        'sum'=>0,
-        'payment_for_goods'=>$request->payment_for_goods,
-        'order_id'=>$request->order_id,
-        'product_id'=>$request->product_id
+            'sum' => $validated['sum'],
+            'payment_for_goods '=> $validated['payment_for_goods'],
+            'order_id' => $validated['order_id'],
+            'product_id'=> $validated['product_id']
         ]);
-    
-        $sum=0;
-        foreach((array)($request->products) as $product){
-        $orderProduct =Product::create([
-          'transaction_id'=>$tran->transaction_id,
-          'product_id'=>$product['product_id'],
-          'price'=>$product['price']
-        ]);
-
-        $sum+=($product['price']);  
-        }
 
         return $transaction;
     }
-     public function update($id,Request $request){
+
+    //update method accept id data and request
+    //validate the request data, then find the order by id, then update the method
+    public function update(int $id,Request $request){
         $transaction=Transaction::findOrFail($id);
+        $validated = $request->validate([
+            'sum' => 'required|integer|max:100',
+            'payment_for_goods' => 'required|max:100',
+            'order_id' => 'required|integer|max:100',
+            'product_id' => 'required|integer|max:100',
+        ]);
         $transaction->update([
-            'sum'=>$request->sum,
-            'product_id'=>$request->product_id,
-            'payment_for_goods'=>$request->payment_for_goods,
-            'order_id'=>$request->order_id
+            'sum' => $validated['Type'],
+            'payment_for_goods '=> $validated['payment_for_goods'],
+            'order_id' => $validated['order_id'],
+            'product_id'=> $validated['product_id']
         ]);
 
         return $transaction;
     }
     
-    public function delete($id){
+    //delete method
+    //accept ID data, find it and through the delete method, do this tri-catch to catch errors or incorrect requests
+    public function delete(int $id){
         try{
             $transaction=Transaction::findOrFail($id);
         }catch(Exception $exception){

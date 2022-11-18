@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\config\constants\TransactionTypeConstant;
 
 class OrderController extends Controller
-{
+{    
+    //Public method Show in Order get off filter in (productid == 1)
+    //with (products) relation 
+    //will display product orders by ID indexing from pagination up to const 10 pages 
     public function show(){
         // where('product_id','=','1')->
-        $order= Order::with('products')->paginate(10); 
+        $order= Order::with('products')->paginate(config('constants.options.page')); 
 
         return $order;
     }
-
+    
+    //create order 
+    //method accept request from web page accept data validate it and create
     public function create(Request $request){
         $validated = $request->validate([
             'status' => 'required|max:100',
@@ -26,8 +32,10 @@ class OrderController extends Controller
 
         return $order;
     }
-
-     public function update(int $id, Request $request){
+    
+    //update method accept id data and request
+    //validate the request data, then find the order by id, then update the method
+    public function update(int $id, Request $request){
         $validated = $request->validate([
             'status' => 'required|max:100',
             'product_id' => 'required|integer|max:100',
@@ -41,8 +49,10 @@ class OrderController extends Controller
         
         return $order;
     }
-
-     public function delete(int $id){
+    
+    //delete method
+    //accept ID data, find it and through the delete method, do this tri-catch to catch errors or incorrect requests
+    public function delete(int $id){
         try{
             $order=Order::findOrFail($id);
         }catch(Exception $exception){

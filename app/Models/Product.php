@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Provider;
-// enum ProductTypeEnum:string {
-//     case Tech = 'Tech';
-//     case Phone = 'Phone';
-//     case Furniture = 'Furniture';
-//     case Bijouterie = 'Bijouterie';
-// }
+
 class Product extends Model
 {
     protected $fillable = [
@@ -18,7 +13,7 @@ class Product extends Model
     ];
     
     public function providers(){
-        return $this->belongsTo(Provider::class,'provider_id');
+        return $this->belongsTo(Provider::class, 'provider_id');
     }
 
     public function transaction(){

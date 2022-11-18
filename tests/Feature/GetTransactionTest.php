@@ -20,7 +20,14 @@ class GetTransactionTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // public function test_201_ok()
+    public function test_empty_page_array()
+    {
+        $response = $this->get('http://127.0.0.1:8000/api/transactions?page='.$this->page+1);
+
+        $response->assertJsonCount(0,'data');
+    }
+
+    // public function test_201_create()
     // {
     //     $response = $this->post('http://127.0.0.1:8000/api/transaction',['Type'=>'Machine','product_id'=>1,'provider_id'=>1,'product_name'=>'Qweweqwe','description'=>'Asdasdasd','price'=>'1200']);
     //     $response->assertStatus(201);

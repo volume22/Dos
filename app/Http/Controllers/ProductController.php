@@ -6,22 +6,27 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
-{
+{   
+    //Public method Show in Order get off filter in (Type == request)
+    //with (providers) relation 
+    //will display product orders by Type indexing from pagination up to 10 pages 
     public function show(Request $request){
-        $validated = $request->validate([
-            'Type' => 'required|max:100',
-        ]);
-        if($request->Type !=null){
-            $provider= Product::where('Type', '=' , $request)
+        if($request!=null){
+            $validated = $request->validate([
+                'Type' => 'required|max:100',
+            ]);
+            $product = Product::where('Type', '=' , $request->Type)
             ->with('providers')
-            ->paginate(10);
+            ->paginate(config('constants.options.page'));
         } else {
             return response()->json('NON', 404);
         }
 
-        return $prov;
+        return $product;
     }
-
+    
+    //create product 
+    //method accept request from web page accept data validate it and create
     public function update(int $id,Request $request){
         $validated = $request->validate([
             'Type' => 'required|max:100',
@@ -30,8 +35,8 @@ class ProductController extends Controller
             'description' => 'required|max:100',
             'price' => 'required|max:100',
         ]);
-        $provider=Product::findOrFail($id);
-        $provider = Product::update([
+        $product=Product::findOrFail($id);
+        $product = Product::update([
             'Type' =>  $validated['Type'],
             'provider_id' => $validated['provider_id'],
             'product_name' => $validated['product_name'],
@@ -39,9 +44,11 @@ class ProductController extends Controller
             'price' => $validated['description']
         ]);
 
-        return $provider;
+        return $product;
     }
 
+    //update method accept id data and request
+    //validate the request data, then find the order by id, then update the method
     public function create(Request $request){
         $validated = $request->validate([
             'Type' => 'required|max:100',
@@ -50,7 +57,7 @@ class ProductController extends Controller
             'description' => 'required|max:100',
             'price' => 'required|max:100',
         ]);
-        $provider = Product::Create([
+        $product = Product::Create([
             'Type' =>  $validated['Type'],
             'provider_id' => $validated['provider_id'],
             'product_name' => $validated['product_name'],
@@ -58,17 +65,19 @@ class ProductController extends Controller
             'price' => $validated['description']
         ]);
 
-        return $provider;
+        return $product;
     }
-     
+
+    //delete method
+    //accept ID data, find it and through the delete method, do this tri-catch to catch errors or incorrect requests 
     public function delete(int $id){
         try{
-            $provider=Product::findOrFail($id);
+            $product=Product::findOrFail($id);
         } catch (Exception $exception){
             throw new NotFoundException('Netu');
         }
 
-        $provider->delete();
+        $product->delete();
 
         return response()->json('deleted done', 204);
     }
