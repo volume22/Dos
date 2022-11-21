@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Const\TransactionTypeConstant;
 
 class ProductController extends Controller
 {   
@@ -17,7 +18,7 @@ class ProductController extends Controller
             ]);
             $product = Product::where('Type', '=' , $request->Type)
             ->with('providers')
-            ->paginate(config('constants.options.page'));
+            ->paginate(TransactionTypeConstant::TYPE_PAGE);
         } else {
             return response()->json('NON', 404);
         }
@@ -27,7 +28,7 @@ class ProductController extends Controller
     
     //create product 
     //method accept request from web page accept data validate it and create
-    public function update(int $id,Request $request){
+    public function update( $id,Request $request){
         $validated = $request->validate([
             'Type' => 'required|max:100',
             'provider_id' => 'required|integer|max:100',

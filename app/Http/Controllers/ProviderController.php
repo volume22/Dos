@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Provider;
+use App\Const\TransactionTypeConstant;
 
 class ProviderController extends Controller
 {
@@ -11,7 +12,7 @@ class ProviderController extends Controller
   //no connection as we only need suppliers  
   //pagination up to 10 pages 
   public function show(){
-    $provider= Provider::paginate(config('constants.options.page')); 
+    $provider= Provider::paginate(TransactionTypeConstant::TYPE_PAGE); 
 
     return $provider;
   }

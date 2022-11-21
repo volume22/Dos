@@ -1,6 +1,6 @@
 -- Adminer 4.8.1 PostgreSQL 13.3 dump
 
-\connect "Sklad";
+-- \connect "Sklad";
 
 
 

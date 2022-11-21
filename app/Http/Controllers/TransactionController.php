@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Const\TransactionTypeConstant;
 
 class TransactionController extends Controller
 {   
@@ -11,7 +12,7 @@ class TransactionController extends Controller
     //with (products and orders) relation 
     //pagination up to 10 pages 
     public function show(){
-        $transaction= Transaction::with('products','orders')->paginate(config('constants.options.page')); 
+        $transaction= Transaction::with('products','orders')->paginate(TransactionTypeConstant::TYPE_PAGE); 
 
         return $transaction;
     }
@@ -29,7 +30,7 @@ class TransactionController extends Controller
             'sum' => $validated['sum'],
             'payment_for_goods '=> $validated['payment_for_goods'],
             'order_id' => $validated['order_id'],
-            'product_id'=> $validated['product_id']
+            'product_id' => $validated['product_id']
         ]);
 
         return $transaction;
@@ -46,7 +47,7 @@ class TransactionController extends Controller
             'product_id' => 'required|integer|max:100',
         ]);
         $transaction->update([
-            'sum' => $validated['Type'],
+            'sum' => $validated['sum'],
             'payment_for_goods '=> $validated['payment_for_goods'],
             'order_id' => $validated['order_id'],
             'product_id'=> $validated['product_id']

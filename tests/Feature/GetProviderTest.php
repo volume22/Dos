@@ -18,6 +18,7 @@ class GetProviderTest extends TestCase
         $response = $this->get('http://127.0.0.1:8000/api/providers');
 
         $response->assertStatus(200);
+        $this->page = $response->json()['last_page']; 
     }
 
     public function test_empty_page_array()

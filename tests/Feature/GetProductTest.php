@@ -14,8 +14,10 @@ class GetProductTest extends TestCase
      * @return void
      */
     public function test_check_200_ok(){
-        $response = $this->get('http://127.0.0.1:8000/api/products');
+        $response = $this->get('http://127.0.0.1:8000/api/products?Type=Bike');
+
         $response->assertStatus(200);
+        $this->page = $response->json()['last_page']; 
     }
 
     public function test_empty_page_array()

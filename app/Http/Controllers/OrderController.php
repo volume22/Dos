@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
-use App\config\constants\TransactionTypeConstant;
+
+use App\Const\TransactionTypeConstant;
 
 class OrderController extends Controller
 {    
@@ -13,7 +14,7 @@ class OrderController extends Controller
     //will display product orders by ID indexing from pagination up to const 10 pages 
     public function show(){
         // where('product_id','=','1')->
-        $order= Order::with('products')->paginate(config('constants.options.page')); 
+        $order= Order::with('products')->paginate(TransactionTypeConstant::TYPE_PAGE); 
 
         return $order;
     }
