@@ -12,9 +12,15 @@ class OrderController extends Controller
     //Public method Show in Order get off filter in (productid == 1)
     //with (products) relation 
     //will display product orders by ID indexing from pagination up to const 10 pages 
-    public function show(){
-        // where('product_id','=','1')->
-        $order= Order::with('products')->paginate(TransactionTypeConstant::TYPE_PAGE); 
+    public function showPayed(){
+       
+        $order= Order::with('products')->where('status','=','Payed')->paginate(TransactionTypeConstant::TYPE_PAGE); 
+
+        return $order;
+    }
+    public function showNotPayed(){
+       
+        $order= Order::with('products')->where('status','=','Not Payed')->paginate(TransactionTypeConstant::TYPE_PAGE); 
 
         return $order;
     }

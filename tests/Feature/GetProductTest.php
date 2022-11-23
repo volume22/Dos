@@ -8,6 +8,8 @@ use Tests\TestCase;
 
 class GetProductTest extends TestCase
 {
+    protected $page = 0;
+    protected $id=0;
     /**
      * A basic feature test example.
      *
@@ -27,12 +29,27 @@ class GetProductTest extends TestCase
         $response->assertJsonCount(0,'data');
     }
 
-    // public function test_201_created_product()
-    // {
-    //     $response = $this->post('http://127.0.0.1:8000/api/product',['Type'=>'Machine','product_id'=>1,'provider_id'=>1,'product_name'=>'Qweweqwe','description'=>'Asdasdasd','price'=>'1200']);
-    //     $response->assertStatus(201);
-    // }
+    public function test_201_created_product()
+    {
+        
+        $response = $this->post('http://127.0.0.1:8000/api/product',
+          ['Type' => 'Machine' , 'product_id' => 1,
+          'provider_id' => 1, 'product_name' => 'Qweweqwe' ,
+          'description' => 'Asdasdasd' , 'price' => '1200']);
 
+        $response->assertStatus(201);
+        $this->id = $response->json()['id'];
+    }
+    
+    public function test_204_updated_successfully(){
+
+        $response = $this->put('http://127.0.0.1:8000/api/product/'.$this->id,
+           ['Type' => 'Machine' , 'product_id' => 1,
+           'provider_id' => 1, 'product_name' => 'Qweweqwe' ,
+           'description' => 'Qwerty' , 'price' => '550']);
+
+        $response->assertStatus(204);
+    }
     // public function test_405_Not_Allowed()
     // {
     //     $response = $this->get('http://127.0.0.1:8000/api/product',['Type'=>'Machine','product_id'=>1,'provider_id'=>1,'product_name'=>'Qweweqwe','description'=>'Asdasdasd','price'=>'1200']);
@@ -45,10 +62,10 @@ class GetProductTest extends TestCase
     // }
 
 
-    // public function test_204_Deleted(){
-    //     $response = $this->delete('http://127.0.0.1:8000/api/product/9');
-    //     $response->assertStatus(204);  
-    // }
+    public function test_204_Deleted(){
+        $response = $this->delete('http://127.0.0.1:8000/api/product/'.$this->id);
+        $response->assertStatus(204);  
+    }
 
     }
 

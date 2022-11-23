@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class GetProviderTest extends TestCase
 {
+    protected $page = 0;
     /**
      * A basic feature test example.
      *
