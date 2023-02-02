@@ -28,7 +28,8 @@ class ProductController extends Controller
     
     //create product 
     //method accept request from web page accept data validate it and create
-    public function update( $id,Request $request){
+    public function update(int $id,Request $request){
+      
         $validated = $request->validate([
             'Type' => 'required|max:100',
             'provider_id' => 'required|integer|max:100',
@@ -36,13 +37,13 @@ class ProductController extends Controller
             'description' => 'required|max:100',
             'price' => 'required|max:100',
         ]);
-        $product=Product::findOrFail($id);
-        $product = Product::update([
+        $product = Product::findOrFail($id);
+        $product -> update([
             'Type' =>  $validated['Type'],
             'provider_id' => $validated['provider_id'],
             'product_name' => $validated['product_name'],
             'description' => $validated['description'],
-            'price' => $validated['description']
+            'price' => $validated['price']
         ]);
 
         return $product;
@@ -63,7 +64,7 @@ class ProductController extends Controller
             'provider_id' => $validated['provider_id'],
             'product_name' => $validated['product_name'],
             'description' => $validated['description'],
-            'price' => $validated['description']
+            'price' => $validated['price']
         ]);
 
         return $product;

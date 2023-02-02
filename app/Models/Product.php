@@ -19,6 +19,9 @@ class Product extends Model
     public function transaction(){
         return $this->hasMany(Transaction::class);
     }
+    public function like(){
+        return $this->belongsTo(Like::class);
+    }
 
     use HasFactory;
 }

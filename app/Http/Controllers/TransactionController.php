@@ -38,14 +38,15 @@ class TransactionController extends Controller
 
     //update method accept id data and request
     //validate the request data, then find the order by id, then update the method
-    public function update(int $id,Request $request){
-        $transaction=Transaction::findOrFail($id);
+    public function update( $id,Request $request){
+         $transaction=Transaction::findOrFail($id);
         $validated = $request->validate([
             'sum' => 'required|integer|max:100',
             'payment_for_goods' => 'required|max:100',
             'order_id' => 'required|integer|max:100',
             'product_id' => 'required|integer|max:100',
         ]);
+       
         $transaction->update([
             'sum' => $validated['sum'],
             'payment_for_goods '=> $validated['payment_for_goods'],

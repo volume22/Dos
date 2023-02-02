@@ -13,16 +13,8 @@ CREATE TABLE "public"."orders" (
     CONSTRAINT "orders_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
+
+
 INSERT INTO "orders" ("id", "product_id", "status", "created_at", "updated_at") VALUES
 (1,	1,	'Payed',	'2022-11-21 13:32:27',	'2022-11-21 13:32:27'),
 (4,	2,	'Not Payed',	'2022-11-21 13:53:23',	'2022-11-21 13:53:23'),
@@ -46,22 +38,8 @@ CREATE TABLE "public"."products" (
     CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
+
+
 INSERT INTO "products" ("Type", "id", "provider_id", "product_name", "description", "price", "created_at", "updated_at") VALUES
 ('Bike',	1,	1,	'Elfbar',	'BC5500',	'5000',	'2022-11-21 13:36:03',	'2022-11-21 13:36:03'),
 ('ElfBar',	6,	3,	'ElfBAR',	'BC4000 Energy',	'4500',	'2022-11-21 14:57:42',	'2022-11-21 14:57:42'),
@@ -81,14 +59,7 @@ CREATE TABLE "public"."providers" (
     CONSTRAINT "providers_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
+
 INSERT INTO "providers" ("id", "provider_name", "created_at", "updated_at") VALUES
 (1,	'TOO ALATAU',	'2022-11-21 13:36:22',	'2022-11-21 13:36:22'),
 (2,	'TOO Kimex',	'2022-11-21 13:48:22',	'2022-11-21 13:48:22'),
@@ -110,20 +81,7 @@ CREATE TABLE "public"."transactions" (
     CONSTRAINT "transactions_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
-<br />
-<b>Warning</b>:  Undefined property: stdClass::$flags in <b>C:\OpenServer\modules\system\html\openserver\adminer\adminer_core.php</b> on line <b>200</b><br />
+
 INSERT INTO "transactions" ("id", "product_id", "sum", "payment_for_goods", "order_id", "created_at", "updated_at") VALUES
 (1,	1,	5500,	'QR',	1,	'2022-11-21 13:36:43',	'2022-11-21 13:36:43'),
 (2,	1,	2500,	'QR',	2,	NULL,	NULL),

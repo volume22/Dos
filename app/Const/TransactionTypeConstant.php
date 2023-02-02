@@ -5,7 +5,7 @@ namespace App\Const;
 
 class TransactionTypeConstant
  {
-    public const TYPE_PAGE = 10;
+    public const TYPE_PAGE = 1;
  }
 //  return [
 //     'options' => [

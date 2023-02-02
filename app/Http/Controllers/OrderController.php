@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
-
 use App\Const\TransactionTypeConstant;
 
 class OrderController extends Controller
@@ -12,18 +11,11 @@ class OrderController extends Controller
     //Public method Show in Order get off filter in (productid == 1)
     //with (products) relation 
     //will display product orders by ID indexing from pagination up to const 10 pages 
-    public function showPayed(){
-       
-        $order= Order::with('products')->where('status','=','Payed')->paginate(TransactionTypeConstant::TYPE_PAGE); 
-
+    public function show(){
+        $order = Order::with('products')->paginate(TransactionTypeConstant::TYPE_PAGE); 
         return $order;
     }
-    public function showNotPayed(){
-       
-        $order= Order::with('products')->where('status','=','Not Payed')->paginate(TransactionTypeConstant::TYPE_PAGE); 
-
-        return $order;
-    }
+    
     
     //create order 
     //method accept request from web page accept data validate it and create

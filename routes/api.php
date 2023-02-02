@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('products', [\App\Http\Controllers\ProductController::class, 'show']);
-
 Route::post('product', [\App\Http\Controllers\ProductController::class, 'create']);
 Route::put('product/{id}', [\App\Http\Controllers\ProductController::class, 'update'])->where('id', '[0-9]+');
 Route::delete('product/{id}', [\App\Http\Controllers\ProductController::class, 'delete'])->where('id', '[0-9]+');;
@@ -15,17 +14,19 @@ Route::post('provider', [\App\Http\Controllers\ProviderController::class, 'creat
 Route::put('provider/{id}', [\App\Http\Controllers\ProviderController::class, 'update'])->where('id', '[0-9]+');;
 Route::delete('provider/{id}', [\App\Http\Controllers\ProviderController::class, 'delete'])->where('id', '[0-9]+');;
 
-Route::get('ordersp', [\App\Http\Controllers\OrderController::class, 'showPayed']);
-Route::get('ordersn', [\App\Http\Controllers\OrderController::class, 'showNotPayed']);
+Route::get('orders', [\App\Http\Controllers\OrderController::class, 'show']);
 Route::post('order', [\App\Http\Controllers\OrderController::class, 'create']);
 Route::put('order/{id}', [\App\Http\Controllers\OrderController::class, 'update'])->where('id', '[0-9]+');;
 Route::delete('order/{id}', [\App\Http\Controllers\OrderController::class, 'delete'])->where('id', '[0-9]+');;
 
 Route::get('transactions', [\App\Http\Controllers\TransactionController::class, 'show']);
 Route::post('transaction', [\App\Http\Controllers\TransactionController::class, 'create']);
-Route::put('transaction/{id}', [\App\Http\Controllers\TransactionController::class, 'update'])->where('id', '[0-9]+');;
+Route::put('transactions/{id}', [\App\Http\Controllers\TransactionController::class, 'update'])->where('id', '[0-9]+');;
 Route::delete('transaction/{id}', [\App\Http\Controllers\TransactionController::class, 'delete'])->where('id', '[0-9]+');;
 
+Route::get('like', [\App\Http\Controllers\LikeController::class, 'show']);
+Route::post('like', [\App\Http\Controllers\LikeController::class, 'addLikes']);
+Route::delete('like/{id}', [\App\Http\Controllers\LikeController::class, 'delete'])->where('id', '[0-9]+');;
 /*
 |--------------------------------------------------------------------------
 | API Routes
